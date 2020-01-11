@@ -6,4 +6,8 @@
   :dependencies [[org.clojure/clojure "1.10.0"]
                  [clj-http "3.10.0"]
                  [org.clojure/data.json "0.2.7"]]
-  :repl-options {:init-ns email-normalisation.core})
+  :repl-options {:init-ns email-normalisation.core}
+  :deploy-repositories {"releases" {:url "https://repo.clojars.org" :creds :env :sign-releases false}}
+  :repositories [["releases" {:url "https://repo.clojars.org"
+                              :username :env
+                              :password :env}]])
