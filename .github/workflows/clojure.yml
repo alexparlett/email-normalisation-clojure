@@ -20,4 +20,4 @@ jobs:
     steps:
     - uses: actions/checkout@v1
     - name: Deploy to clojars
-      run: lein deploy clojars
+      run: lein deploy
