@@ -1,4 +1,4 @@
-(defproject email-normalisation "1.0.1"
+(defproject email-normalisation "1.0.2"
   :description "Email normalisation using dns over https for provider calculations"
   :url "https://github.com/alexparlett/email-normalisation-clojure"
   :license {:name "EPL-2.0 OR GPL-2.0-or-later WITH Classpath-exception-2.0"
