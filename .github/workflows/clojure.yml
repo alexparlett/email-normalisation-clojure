@@ -3,15 +3,6 @@ name: Clojure CI
 on: [push]
 
 jobs:
-  build:
-    runs-on: ubuntu-latest
-    steps:
-    - uses: actions/checkout@v1
-    - name: Install dependencies
-      run: lein deps
-    - name: Run tests
-      run: lein test
-      
   deploy:
     runs-on: ubuntu-latest
     env:
@@ -19,5 +10,20 @@ jobs:
       LEIN_USERNAME: ${{ secrets.LEIN_USERNAME }}
     steps:
     - uses: actions/checkout@v1
+    - name: Install dependencies
+      run: lein deps
+    - name: Run tests
+      run: lein test
+    - name: Increment version
+      run: lein bump-version
     - name: Deploy to clojars
       run: lein deploy
+    - name: Commit files
+      run: |
+        git config --local user.email "action@github.com"
+        git config --local user.name "GitHub Action"
+        git commit -m "Add changes" -a
+    - name: Push changes
+      uses: ad-m/github-push-action@master
+      with:
+        github_token: ${{ secrets.GITHUB_TOKEN }}
