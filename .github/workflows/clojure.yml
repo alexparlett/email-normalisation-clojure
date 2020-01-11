@@ -16,6 +16,9 @@ jobs:
       
   deploy:
     runs-on: ubuntu-latest
+    env:
+      LEIN_PASSWORD: ${{ secrets.LEIN_PASSWORD }}
+      LEIN_USERNAME: ${{ secrets.LEIN_USERNAME }}
     steps:
     - uses: actions/checkout@v1
     - name: Deploy to clojars
